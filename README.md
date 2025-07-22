@@ -1,3 +1,16 @@
+Установка:
+git clone https://github.com/artbotguy/my-web-pet.git
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+
+Добавление/удаление пакетов:
+pip install/uninstall <package>
+pip freeze > requirements.txt
+
+
+
+
 alias gustart='gunicorn -w 4 -b 0.0.0.0:5000 app:app > /dev/null 2>&1 &'
 alias gustop='pkill -f "gunicorn"'
 
@@ -30,5 +43,3 @@ WantedBy=multi-user.target
 
 bash
 sudo systemctl daemon-reload
-sudo systemctl start myflaskapp
-sudo systemctl enable myflaskapp  # автозагрузка
