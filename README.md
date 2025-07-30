@@ -1,12 +1,18 @@
+# Важные поинты 
+- есть измнения в основной конфиге и локальных, все лежит в ./nginx
+
+
 # Установка:
 git clone https://github.com/artbotguy/my-web-pet.git
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
-
 # Добавление/удаление пакетов:
 pip install/uninstall <package>
 pip freeze > requirements.txt
+# Для логов
+sudo apt install libnginx-mod-http-headers-more-filter
+
 
 
 # Перед запуском
@@ -19,6 +25,13 @@ alias gustop='pkill -f "gunicorn"'
 
 alias gustartv='gunicorn -w 4 -b 0.0.0.0:5000 wsgi:app'
 
+# Команды
+    # Логи
+    tail -f /var/log/nginx/abotkin.access.log
+    tail -f /var/log/nginx/abotkin.error.log
+    
+    # nginx
+    sudo nginx -t && sudo systemctl reload nginx
 
 
 # TODO
