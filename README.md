@@ -1,24 +1,27 @@
-Установка:
+# Установка:
 git clone https://github.com/artbotguy/my-web-pet.git
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
 
-Добавление/удаление пакетов:
+# Добавление/удаление пакетов:
 pip install/uninstall <package>
 pip freeze > requirements.txt
 
 
+# Перед запуском
+python3 -m venv venv
+source venv/bin/activate
 
-
-alias gustart='gunicorn -w 4 -b 0.0.0.0:5000 app:app > /dev/null 2>&1 &'
+# Запуск
+alias gustart='gunicorn -w 4 -b 0.0.0.0:5000 wsgi:app > /dev/null 2>&1 &'
 alias gustop='pkill -f "gunicorn"'
 
-alias gustartv='gunicorn -w 4 -b 0.0.0.0:5000 app:app'
+alias gustartv='gunicorn -w 4 -b 0.0.0.0:5000 wsgi:app'
 
 
 
-TODO
+# TODO
 
 Для постоянной работы создаем Systemd-сервис:
 

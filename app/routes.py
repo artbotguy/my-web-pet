@@ -4,6 +4,10 @@ from .utils.file_upload import FileUploader  # Импортируем класс
 bp = Blueprint('main', __name__)
 uploader = FileUploader()  # Создаем экземпляр здесь
 
+@bp.route('/')  # 👈 Маршрут на корень (главная страница)
+def index():
+    return render_template('index.html')  # или любой другой шаблон
+
 
 @bp.route('/upload', methods=['GET', 'POST'])
 def upload_file():
