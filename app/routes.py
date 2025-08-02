@@ -11,7 +11,7 @@ def index():
 
 
 @bp.route('/test')
-def index():
+def test():
     return render_template('test.html')
 
 
