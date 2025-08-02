@@ -2,11 +2,17 @@ from flask import Blueprint, render_template, request, current_app
 from .utils.file_upload import FileUploader  # Импортируем класс
 
 bp = Blueprint('main', __name__)
-uploader = FileUploader()  # Создаем экземпляр здесь
+uploader = FileUploader()
 
-@bp.route('/')  # 👈 Маршрут на корень (главная страница)
+
+@bp.route('/')
 def index():
-    return render_template('index.html')  # или любой другой шаблон
+    return render_template('index.html')
+
+
+@bp.route('/test')
+def index():
+    return render_template('test.html')
 
 
 @bp.route('/upload', methods=['GET', 'POST'])
