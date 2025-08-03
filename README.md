@@ -20,10 +20,10 @@ python3 -m venv venv
 source venv/bin/activate
 
 # Запуск
-alias gustart='gunicorn -w 4 -b 0.0.0.0:5000 wsgi:app > /dev/null 2>&1 &'
+alias gustart='gunicorn -w 4 -b 0.0.0.0:8000 wsgi:app > /dev/null 2>&1 &'
 alias gustop='pkill -f "gunicorn"'
 
-alias gustartv='gunicorn -w 4 -b 0.0.0.0:5000 wsgi:app'
+alias gustartv='gunicorn -w 4 -b 0.0.0.0:8000 wsgi:app'
 
 # Команды
     # Логи

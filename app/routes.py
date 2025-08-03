@@ -15,6 +15,16 @@ def test():
     return render_template('test.html')
 
 
+@bp.route("/about")
+def about():
+    return render_template("about.html")
+
+
+@bp.route("/contact")
+def contact():
+    return render_template("contact.html")
+
+
 @bp.route('/upload', methods=['GET', 'POST'])
 def upload_file():
     if request.method == 'POST':

@@ -1,20 +1,15 @@
-<!DOCTYPE html>
-<html>
+{% extends "base.html" %}
 
-<head>
-    <title>Загрузка файла</title>
-</head>
+{% block title %}Загрузка файла{% endblock %}
 
-<body>
-    <h1>Загрузите файл</h1>
-    <form method="POST" enctype="multipart/form-data">
-        <input type="file" name="file">
-        <input type="submit" value="Загрузить">
-    </form>
+{% block content %}
+<h1>Загрузите файл</h1>
+<form method="POST" enctype="multipart/form-data">
+    <input type="file" name="file">
+    <input type="submit" value="Загрузить">
+</form>
 
-    {% if message %}
-    <div class="message">{{ message|safe }}</div>
-    {% endif %}
-</body>
-
-</html>
+{% if message %}
+<div class="message">{{ message|safe }}</div>
+{% endif %}
+{% endblock %}
