@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}My Flask App{% endblock %}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ static_url }}/style.css">
 </head>
 
 <body>
@@ -20,7 +20,7 @@
             {% block content %}{% endblock %}
         </div>
     </div>
-    <div class="main-img"><img src="{{ url_for('static', filename='img/eye.webp') }}" alt=""></div>
+    <div class="main-img"><img src="{{ static_url }}/img/eye.webp" alt=""></div>
 </body>
 
 </html>
