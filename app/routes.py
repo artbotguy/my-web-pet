@@ -1,13 +1,17 @@
 from flask import Blueprint, render_template, request, current_app
-from .utils.file_upload import FileUploader  # Импортируем класс
+from .utils.file_upload import FileUploader 
 
 bp = Blueprint('main', __name__)
 uploader = FileUploader()
 
+@bp.route('/static/<path:filename>')
+def block_static(filename):
+    return "Not Found", 404
 
 @bp.route('/')
 def index():
-    return render_template('index.html')
+    headers = dict(request.headers)
+    return render_template('index.html', headers=headers)
 
 
 @bp.route('/test')

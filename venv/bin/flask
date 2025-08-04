@@ -1,4 +1,4 @@
-#!/Users/abotkin/work/my-web-pet/venv/bin/python3.13
+#!/var/www/abotkin.space/my-web-pet/venv/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys

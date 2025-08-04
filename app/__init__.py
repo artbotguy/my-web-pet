@@ -3,7 +3,7 @@ import os
 
 
 def create_app():
-    app = Flask(__name__)
+    app = Flask(__name__,  static_folder=None)
 
     # Конфигурация
     app.config['UPLOAD_FOLDER'] = os.path.join(

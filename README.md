@@ -4,9 +4,15 @@
 
 # Установка:
 git clone https://github.com/artbotguy/my-web-pet.git
+cd my-web-pet
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
+    # если траблы
+    cd /var/www/abotkin.space/my-web-pet/
+    rm -rf venv
+    python3 -m venv venv --clear
+source venv/bin/activate
 # Добавление/удаление пакетов:
 pip install/uninstall <package>
 pip freeze > requirements.txt
@@ -59,3 +65,4 @@ WantedBy=multi-user.target
 
 bash
 sudo systemctl daemon-reload
+
