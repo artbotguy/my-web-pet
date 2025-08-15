@@ -1,8 +1,8 @@
-# Важные поинты 
+## Важные поинты 
 - есть измнения в основной конфиге и локальных, все лежит в ./nginx
 
 
-# Установка:
+## Установка:
 git clone https://github.com/artbotguy/my-web-pet.git
 cd my-web-pet
 python3 -m venv venv
@@ -12,26 +12,31 @@ pip install -r requirements.txt
     cd /var/www/abotkin.space/my-web-pet/
     rm -rf venv
     python3 -m venv venv --clear
-source venv/bin/activate
-# Добавление/удаление пакетов:
+    source venv/bin/activate
+#### Добавление/удаление пакетов:
 pip install/uninstall <package>
 pip freeze > requirements.txt
-# Для логов
+#### Для логов
 sudo apt install libnginx-mod-http-headers-more-filter
+### Автозапуск
+sudo vim /etc/systemd/system/mwp.service #/Users/abotkin/work/my-web-pet/any_serv_files
+sudo systemctl daemon-reload 
+sudo systemctl enable mwp.service
+sudo systemctl start mwp.service
 
-
-
-# Перед запуском
-python3 -m venv venv
+### Запуск приложения вручную
+cd /var/www/abotkin.space/my-web-pet/
 source venv/bin/activate
+gunicorn -w 4 -b 0.0.0.0:8000 wsgi:app
 
-# Запуск
-alias gustart='gunicorn -w 4 -b 0.0.0.0:8000 wsgi:app > /dev/null 2>&1 &'
-alias gustop='pkill -f "gunicorn"'
 
-alias gustartv='gunicorn -w 4 -b 0.0.0.0:8000 wsgi:app'
+### Все команды на запуск/остановку
+gunicorn -w 4 -b 0.0.0.0:8000 wsgi:app > /dev/null 2>&1 &
+pkill -f "gunicorn
+|
+gunicorn -w 4 -b 0.0.0.0:8000 wsgi:app
 
-# Команды
+### Команды
     # Логи
     tail -f /var/log/nginx/abotkin.access.log
     tail -f /var/log/nginx/abotkin.error.log
@@ -40,29 +45,14 @@ alias gustartv='gunicorn -w 4 -b 0.0.0.0:8000 wsgi:app'
     sudo nginx -t && sudo systemctl reload nginx
 
 
-# TODO
+## TODO
 
-Для постоянной работы создаем Systemd-сервис:
 
-bash
-sudo nano /etc/systemd/system/myflaskapp.service
-Конфиг сервиса:
 
-ini
-[Unit]
-Description=Gunicorn для моего Flask-приложения
-After=network.target
+## Optional
 
-[Service]
-User=ваш_пользователь  # Например, ubuntu
-WorkingDirectory=/путь/к/вашему/приложению
-ExecStart=/путь/к/venv/bin/gunicorn -w 4 -b 127.0.0.1:8000 app:app
-Restart=always
-
-[Install]
-WantedBy=multi-user.target
-Запускаем сервис:
-
-bash
-sudo systemctl daemon-reload
-
+### в .bashrc
+alias gustart='gunicorn -w 4 -b 0.0.0.0:8000 wsgi:app > /dev/null 2>&1 &'
+alias gustop='pkill -f "gunicorn"'
+|
+alias gustartv='gunicorn -w 4 -b 0.0.0.0:8000 wsgi:app'
