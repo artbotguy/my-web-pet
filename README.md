@@ -38,12 +38,10 @@ gunicorn -w 4 -b 0.0.0.0:8000 wsgi:app
 
 ### Команды
     # Логи
-    tail -f /var/log/nginx/abotkin.access.log
-    tail -f /var/log/nginx/abotkin.error.log
+    tail -f /var/log/nginx/abotkin.space.access.log
+    tail -f /var/log/nginx/abotkin.space.error.log
     
     # nginx
-    sudo nginx -t && sudo systemctl reload nginx
-
 
 ## TODO
 
